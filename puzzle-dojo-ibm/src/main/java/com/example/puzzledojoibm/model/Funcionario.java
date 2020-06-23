@@ -8,7 +8,7 @@ public class Funcionario {
 	private LocalTime dataEntrada;
 	private LocalTime dataSaida;
 	private LocalTime dataSaidaAlmoco;
-	private LocalTime dataEntradaAlmco;
+	private LocalTime dataEntradaAlmoco;
 	
 	
 	public Funcionario(String nome, LocalTime dataEntrada, LocalTime dataSaida, LocalTime dataSaidaAlmoco,
@@ -18,7 +18,7 @@ public class Funcionario {
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
 		this.dataSaidaAlmoco = dataSaidaAlmoco;
-		this.dataEntradaAlmco = dataEntradaAlmco;
+		this.dataEntradaAlmoco = dataEntradaAlmco;
 	}
 	
 	// boleano retornando funcionario presente horario
@@ -52,16 +52,16 @@ public class Funcionario {
 		this.dataSaida = dataSaida;
 	}
 	public LocalTime getDataEntradaAlmco() {
-		return dataEntradaAlmco;
+		return dataEntradaAlmoco;
 	}
 	public void setDataEntradaAlmco(LocalTime dataEntradaAlmco) {
-		this.dataEntradaAlmco = dataEntradaAlmco;
+		this.dataEntradaAlmoco = dataEntradaAlmco;
 	}
 
 	@Override
 	public String toString() {
 		return "Funcionario [nome=" + nome + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida
-				+ ", dataSaidaAlmoco=" + dataSaidaAlmoco + ", dataEntradaAlmco=" + dataEntradaAlmco + "]";
+				+ ", dataSaidaAlmoco=" + dataSaidaAlmoco + ", dataEntradaAlmco=" + dataEntradaAlmoco + "]";
 	}
 	
 }
