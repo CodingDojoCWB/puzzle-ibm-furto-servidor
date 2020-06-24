@@ -5,20 +5,20 @@ import java.time.LocalTime;
 public class Funcionario {
 	
 	private String nome;
-	private LocalTime dataEntrada;
-	private LocalTime dataSaida;
-	private LocalTime dataSaidaAlmoco;
-	private LocalTime dataEntradaAlmoco;
+	private LocalTime horaEntrada;
+	private LocalTime horaSaida;
+	private LocalTime horaSaidaAlmoco;
+	private LocalTime horaEntradaAlmoco;
 	
 	
-	public Funcionario(String nome, LocalTime dataEntrada, LocalTime dataSaida, LocalTime dataSaidaAlmoco,
-			LocalTime dataEntradaAlmco) {
+	public Funcionario(String nome, LocalTime horaEntrada, LocalTime horaSaida, LocalTime horaSaidaAlmoco,
+			LocalTime horaEntradaAlmco) {
 		super();
 		this.nome = nome;
-		this.dataEntrada = dataEntrada;
-		this.dataSaida = dataSaida;
-		this.dataSaidaAlmoco = dataSaidaAlmoco;
-		this.dataEntradaAlmoco = dataEntradaAlmco;
+		this.horaEntrada = horaEntrada;
+		this.horaSaida = horaSaida;
+		this.horaSaidaAlmoco = horaSaidaAlmoco;
+		this.horaEntradaAlmoco = horaEntradaAlmco;
 	}
 	
 	// boleano retornando funcionario presente horario
@@ -28,10 +28,10 @@ public class Funcionario {
 	}
 
 	public LocalTime getDataSaidaAlmoco() {
-		return dataSaidaAlmoco;
+		return horaSaidaAlmoco;
 	}
 	public void setDataSaidaAlmoco(LocalTime dataSaidaAlmoco) {
-		this.dataSaidaAlmoco = dataSaidaAlmoco;
+		this.horaSaidaAlmoco = dataSaidaAlmoco;
 	}
 	public String getNome() {
 		return nome;
@@ -40,28 +40,30 @@ public class Funcionario {
 		this.nome = nome;
 	}
 	public LocalTime getDataEntrada() {
-		return dataEntrada;
+		return horaEntrada;
 	}
 	public void setDataEntrada(LocalTime dataEntrada) {
-		this.dataEntrada = dataEntrada;
+		this.horaEntrada = dataEntrada;
 	}
 	public LocalTime getDataSaida() {
-		return dataSaida;
+		return horaSaida;
 	}
 	public void setDataSaida(LocalTime dataSaida) {
-		this.dataSaida = dataSaida;
+		this.horaSaida = dataSaida;
 	}
 	public LocalTime getDataEntradaAlmco() {
-		return dataEntradaAlmoco;
+		return horaEntradaAlmoco;
 	}
 	public void setDataEntradaAlmco(LocalTime dataEntradaAlmco) {
-		this.dataEntradaAlmoco = dataEntradaAlmco;
+		this.horaEntradaAlmoco = dataEntradaAlmco;
 	}
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida
-				+ ", dataSaidaAlmoco=" + dataSaidaAlmoco + ", dataEntradaAlmco=" + dataEntradaAlmoco + "]";
+		return "Funcionario [nome=" + nome + ", horaEntrada=" + horaEntrada + ", horaSaida=" + horaSaida
+				+ ", horaSaidaAlmoco=" + horaSaidaAlmoco + ", horaEntradaAlmoco=" + horaEntradaAlmoco + "]";
 	}
+
+	 
 	
 }

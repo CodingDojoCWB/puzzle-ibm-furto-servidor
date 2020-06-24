@@ -1,6 +1,8 @@
 package com.example.puzzledojoibm;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -17,6 +19,7 @@ import com.opencsv.CSVReaderBuilder;
 public class ProcessamentoDeSuspeitos {
 	
 	private static String arquivo ="PONTO_14-05-2020.csv";
+	private static String logIbm ="IBM123456_Server_log.txt";
 	// leitura do log da IBM
 	
 	private static final Integer COLUNA_NOME_FUNCIONARIO = 0;
@@ -46,6 +49,18 @@ public class ProcessamentoDeSuspeitos {
 					pontoFuncionarios.add( func ); 
 			System.out.println(func);
 	    }
+		// Leitura de log
+		BufferedReader buffRead = new BufferedReader(new FileReader("C:" + File.separator  +logIbm));
+        String linha = "";
+        while (true) {
+            if (linha != null) {
+                System.out.println(linha);
+ 
+            } else
+                break;
+            linha = buffRead.readLine();
+        }
+        buffRead.close();
 	}
 	//2 boleano retornando funcionario presente horario
 	//3 confere com o horario do ultimo log do servidor roubado
