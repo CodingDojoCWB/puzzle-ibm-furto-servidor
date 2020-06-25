@@ -11,6 +11,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.example.puzzledojoibm.model.Funcionario;
 import com.opencsv.CSVReader;
@@ -31,9 +32,7 @@ public class ProcessamentoDeSuspeitos {
 	//Logica de leitura do arquivo txt
 	
 	public static void main(String[] args) throws IOException {
-		
-	
-	
+
 		Reader reader = Files.newBufferedReader(Paths.get("C:" + File.separator  +arquivo));
 		CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
  
@@ -42,25 +41,44 @@ public class ProcessamentoDeSuspeitos {
 		//1 organizar a saida
 		for (String[] linha : batidas) {
 			Funcionario func =	new Funcionario( linha[COLUNA_NOME_FUNCIONARIO] ,
-					convertStringToDate( linha[COLUNA_HORA_ENTRADA] ),
-					convertStringToDate( linha[COLUNA_SAIDA_HORA_ALMOCO] ),
-					convertStringToDate( linha[COLUNA_RETORNO_ALMOCO] ),
-					convertStringToDate( linha[COLUNA_HORA_SAIDA]) );
+					convertStringToTime( linha[COLUNA_HORA_ENTRADA] ),
+					convertStringToTime( linha[COLUNA_SAIDA_HORA_ALMOCO] ),
+					convertStringToTime( linha[COLUNA_RETORNO_ALMOCO] ),
+					convertStringToTime( linha[COLUNA_HORA_SAIDA]) );
 					pontoFuncionarios.add( func ); 
 			System.out.println(func);
 	    }
+		
+		
 		// Leitura de log
+	    LocalTime ultHorario = null;
 		BufferedReader buffRead = new BufferedReader(new FileReader("C:" + File.separator  +logIbm));
         String linha = "";
         while (true) {
             if (linha != null) {
-                System.out.println(linha);
+            	if (linha.length() > 20)
+            	{
+            		ultHorario = convertStringToTime(linha.substring(11, 16));
+            	}
+            	//System.out.println(linha);
  
             } else
                 break;
             linha = buffRead.readLine();
         }
+        System.out.println(ultHorario);
         buffRead.close();
+
+        List<Funcionario> presentes = presentes(pontoFuncionarios, ultHorario);
+        presentes.forEach(System.out::println);
+        
+	}
+
+	private static List<Funcionario> presentes(List<Funcionario> todos, LocalTime ultimoLog){
+		return todos.stream()
+				.filter(f -> f.getDataEntrada().isBefore(ultimoLog) && ultimoLog.isBefore(f.getDataSaida()))
+				.collect(Collectors.toList());
+		
 	}
 	//2 boleano retornando funcionario presente horario
 	//3 confere com o horario do ultimo log do servidor roubado
@@ -72,7 +90,7 @@ public class ProcessamentoDeSuspeitos {
 	// descobrir quem roubou 
 	
 
-	private static LocalTime convertStringToDate(String dataStr) {
+	private static LocalTime convertStringToTime(String dataStr) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		LocalTime dateTime = LocalTime.parse(dataStr, formatter);
 		return dateTime;

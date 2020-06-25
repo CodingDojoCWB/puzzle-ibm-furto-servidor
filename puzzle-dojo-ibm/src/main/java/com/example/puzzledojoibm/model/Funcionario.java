@@ -11,8 +11,12 @@ public class Funcionario {
 	private LocalTime horaEntradaAlmoco;
 	
 	
-	public Funcionario(String nome, LocalTime horaEntrada, LocalTime horaSaida, LocalTime horaSaidaAlmoco,
-			LocalTime horaEntradaAlmco) {
+	public Funcionario(
+			String nome,
+			LocalTime horaEntrada,
+			LocalTime horaSaidaAlmoco,
+			LocalTime horaEntradaAlmco,
+			LocalTime horaSaida) {
 		super();
 		this.nome = nome;
 		this.horaEntrada = horaEntrada;
@@ -60,8 +64,13 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", horaEntrada=" + horaEntrada + ", horaSaida=" + horaSaida
-				+ ", horaSaidaAlmoco=" + horaSaidaAlmoco + ", horaEntradaAlmoco=" + horaEntradaAlmoco + "]";
+		return "Funcionario ["
+				+ "nome=" + nome + ", "
+				+ "horaEntrada=" + horaEntrada + ", "
+				+ "horaSaidaAlmoco=" + horaSaidaAlmoco + ", "
+				+ "horaEntradaAlmoco=" + horaEntradaAlmoco + ", "
+				+ "horaSaida=" + horaSaida + ", "
+				+ "]";
 	}
 
 	 
